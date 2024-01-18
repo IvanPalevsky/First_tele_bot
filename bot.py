@@ -7,6 +7,11 @@ import random
 
 import telebot
 
+@bot.chat_join_request_handler()
+def make_some(message: telebot.types.ChatJoinRequest):
+    bot.send_message(message.chat.id, 'I accepted a new user!')
+    bot.approve_chat_join_request(message.chat.id, message.from_user.id)
+
 jokes = ['Поймал старик золотую рыбку. '
         '— Отпусти меня, старче, три желания исполню! '
         '— Зашибись! — сказал старик. '
